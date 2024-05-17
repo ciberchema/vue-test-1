@@ -28,7 +28,7 @@
                 type: String,
                 required: false,
                 default: 'This is the default description',
-                validator: (value) => { //arrow function sustituye a funcion (value)
+                validator: (value) => { //arrow function sustituye a function (value)
                     if( 20 < value.length && value.length <50){
                         return true;
                     } else {
