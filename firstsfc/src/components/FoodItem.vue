@@ -1,7 +1,7 @@
 <template>
     <div @:click="countClicks()">
         <h2>{{ foodName }}</h2>
-        <img src="/approval.jpg" v-show="foodIsFavorite" alt="imagen diploma"/>
+        <img src="/approval.jpg" v-show="isFavorite" alt="imagen diploma"/>
         <p>{{ message }}</p>
         <p>{{ foodDesc }}</p>
         <p id="red">You have clicked me {{ clicks }} times.</p>
@@ -42,11 +42,11 @@
                 default: false
             }
         },
+        emits: ['toggle-favorite'],
         data(){
             return{
                 message: 'I like '+ this.foodName,
                 clicks: 0,
-                foodIsFavorite: this.isFavorite
             }
         },
         methods: {
@@ -54,7 +54,7 @@
                 this.clicks++;
             },
             toggleFavorite(){
-                this.foodIsFavorite = !this.foodIsFavorite;
+                this.$emit('toggle-favorite', this.foodName);
             }
         }
     };
